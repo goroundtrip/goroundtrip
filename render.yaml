@@ -1,1 +1,14 @@
 # render.yaml for GoRoundTrip
+services:
+  - type: web
+    name: goroundtrip
+    env: python
+    buildCommand: >
+      pip install -r requirements.txt &&
+      python manage.py makemigrations &&
+      python manage.py migrate &&
+      python manage.py collectstatic --noinput
+    startCommand: gunicorn goroundtrip.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: goroundtrip.settings
