@@ -20,33 +20,3 @@
     </ul>
 </body>
 </html>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Book Flight</title>
-</head>
-<body>
-    <h1>Book Flight: {{ flight.origin }} → {{ flight.destination }}</h1>
-
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Book Now</button>
-    </form>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Booking Successful</title>
-</head>
-<body>
-    <h1>Booking Confirmed!</h1>
-    <p>Thank you for booking, {{ booking.name }}.</p>
-    <p>Flight: {{ booking.flight.origin }} → {{ booking.flight.destination }}</p>
-    <p>Date: {{ booking.flight.departure_time }}</p>
-    <a href="{% url 'flight_list' %}">Book Another Flight</a>
-</body>
-</html>
